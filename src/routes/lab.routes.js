@@ -1,27 +1,18 @@
 const { Router} = require('express');
+const { getAllPaciente, getPaciente, createPaciente, deletePaciente, updatePaciente }= require('../controllers/lab.controllers')
+
 const pool = require('../db')
 
 const router = Router();
 
-router.get('/lab', async (req,res)=>{
-    res.send ('retornando lista de pacientes');
+router.get('/lab', getAllPaciente )
 
-})
+router.get('/lab/:id', getPaciente)
 
-router.get('/lab/10', (req,res)=>{
-    res.send ('retornando un paciente');
-})
+router.post('/lab', createPaciente)
 
-router.post('/lab', (req,res)=>{
-    res.send ('creando un paciente');
-})
+router.delete('/lab/:id', deletePaciente)
 
-router.delete('/lab', (req,res)=>{
-    res.send ('eliminando pacientes');
-})
-
-router.put('/lab', (req,res)=>{
-    res.send ('actualizando pacientes');
-})
+router.put('/lab/:id', updatePaciente)
 
 module.exports = router;
