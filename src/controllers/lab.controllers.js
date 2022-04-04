@@ -7,7 +7,7 @@ const getAllPaciente=async (req,res)=>{
         const allPacientes= await pool.query('SELECT * FROM pacientes')
 
         console.log(allPacientes)
-        res.jSON(allPacientes.rows)
+        res.json(allPacientes.rows)
     } catch (error) {
         res.json({error:error.message});
     }
@@ -45,7 +45,7 @@ const createPaciente = async(req,res)=>{
         const result2=await pool.query('SELECT id_system FROM pacientes WHERE num_documento= $1', [num_documento]);
         await pool.query("UPDATE pacientes SET id_paciente = CONCAT(id_paciente ,right('000000'||cast($1 as text),6)) WHERE num_documento= $2", [result2.rows[0]["id_system"],num_documento]);
 
-        
+        console.log(result2)
         res.json(result.rows[0])
     } catch (error) {
         res.json({error:error.message});
