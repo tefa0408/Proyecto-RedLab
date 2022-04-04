@@ -11,3 +11,4 @@ CREATE TABLE pacientes(
     fecha_nac DATE,
     edad integer
 );
+

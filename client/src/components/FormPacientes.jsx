@@ -88,7 +88,7 @@ function FormPacientes() {
         const response = await fetch(`http://localhost:4000/lab/${id}`);
         const data = await response.json();
         console.log(data)
-        setPacientes({tipo_documento:data.tipo_documento,num_documento:data.num_documento,nombres:data.nombres, ape_pat:data.ape_pat, ape_mat:data.ape_mat, fecha_nac:data.fecha_nac, edad:data.edad });
+        setPacientes({id_paciente:data.id_paciente ,tipo_documento:data.tipo_documento,num_documento:data.num_documento,nombres:data.nombres, ape_pat:data.ape_pat, ape_mat:data.ape_mat, fecha_nac:data.fecha_nac, edad:data.edad });
         setEditing(true);
     };
 
@@ -113,6 +113,7 @@ function FormPacientes() {
                 style={{
                     backgroundColor: "white",
                     padding: "1rem",
+                    
                   }}
                 >
                     <Typography ariant="h5" textAlign="center" color="black">
